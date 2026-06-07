@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "نظام إدارة المخازن",
-    "slug": "adarh-almkhzwn-4qkkq3gfosi56akxmgm1n",
+    "slug": "warehouse-management",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "https://cdn-icons-png.flaticon.com/512/1055/1055687.png",
@@ -9,11 +9,6 @@
     "assetBundlePatterns": ["**/*"],
     "android": {
       "package": "com.warehouse.management"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "77288754-a7bf-4bd1-9c35-95f3b843318a"
-      }
     }
   }
 }
