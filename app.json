@@ -4,7 +4,7 @@
     "slug": "adarh-almkhzwn-4qkkq3gfosi56akxmgm1n",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "https://reactnative.dev/img/tiny_logo.png",
+    "icon": "https://cdn-icons-png.flaticon.com/512/1055/1055687.png",
     "userInterfaceStyle": "light",
     "assetBundlePatterns": ["**/*"],
     "android": {
