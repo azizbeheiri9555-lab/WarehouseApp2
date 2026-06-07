@@ -1,30 +1,62 @@
-const { withProjectBuildGradle } = require('@expo/config-plugins');
+const fs = require('fs');
+const path = require('path');
 
-module.exports = function withInjectHostWrapper(config) {
-  return withProjectBuildGradle(config, (config) => {
-    if (config.modResults.language === 'groovy') {
-      const newBuildGradleContent = `
-  allprojects {
-      repositories {
-          mavenCentral()
-          google()
-          maven { url 'https://www.jitpack.io' }
+const androidPath = path.join(__dirname, '..', 'android');
+const mainApplicationPath = path.join(androidPath, 'app', 'src', 'main', 'java', 'com', 'warehouse', 'management', 'MainApplication.kt');
+
+if (fs.existsSync(androidPath)) {
+  if (!fs.existsSync(mainApplicationPath)) {
+    fs.mkdirSync(path.dirname(mainApplicationPath), { recursive: true });
+    fs.writeFileSync(mainApplicationPath, `
+package com.warehouse.management
+
+import android.app.Application
+import android.content.res.Configuration
+import expo.modules.ApplicationLifecycleDispatcher
+import expo.modules.ReactNativeHostWrapper
+
+import com.facebook.react.PackageList
+import com.facebook.react.ReactApplication
+import com.facebook.react.ReactNativeHost
+import com.facebook.react.ReactPackage
+import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.load
+import com.facebook.react.defaults.DefaultReactNativeHost
+import com.facebook.soloader.SoLoader
+
+class MainApplication : Application(), ReactApplication {
+
+  override val reactNativeHost: ReactNativeHost = ReactNativeHostWrapper(
+      this,
+      object : DefaultReactNativeHost(this) {
+        override fun getPackages(): List<ReactPackage> =
+            PackageList(this).packages.apply {
+              // Packages that cannot be autolinked yet can be added manually here, for example:
+              // add(MyReactNativePackage())
+            }
+
+        override fun getJSMainModuleName(): String = "index"
+
+        override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
+
+        override val isNewArchEnabled: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
+        override val isHermesEnabled: Boolean = BuildConfig.IS_HERMES_ENABLED
       }
-  }
-  
-  subprojects {
-      afterEvaluate { project ->
-          if (project.hasProperty('android')) {
-              project.android {
-                  compileSdkVersion 34
-                  buildToolsVersion "34.0.0"
-              }
-          }
-      }
-  }
-  `;
-      config.modResults.contents += newBuildGradleContent;
+  )
+
+  override fun onCreate() {
+    super.onCreate()
+    SoLoader.init(this, false)
+    if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
+      load()
     }
-    return config;
-  });
-};
+    ApplicationLifecycleDispatcher.onApplicationCreate(this)
+  }
+
+  override fun onConfigurationChanged(newConfig: Configuration) {
+    super.onConfigurationChanged(newConfig)
+    ApplicationLifecycleDispatcher.onConfigurationChanged(this, newConfig)
+  }
+}
+`);
+  }
+}
