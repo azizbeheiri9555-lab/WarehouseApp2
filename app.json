@@ -1,11 +1,14 @@
-```json
 {
-  "build": {
-    "preview": {
-      "android": {
-        "buildType": "apk"
-      }
+  "expo": {
+    "name": "نظام إدارة المخازن",
+    "slug": "warehouse-management",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "https://reactnative.dev/img/tiny_logo.png",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "com.warehouse.management"
     }
   }
 }
-```
