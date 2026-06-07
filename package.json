@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android"
+    "android": "expo start --android",
+    "postinstall": "node ./scripts/eas-build-post-install.js"
   },
   "dependencies": {
     "expo": "~52.0.0",
