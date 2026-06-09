@@ -4,16 +4,12 @@
     "appVersionSource": "remote"
   },
   "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal"
-    },
     "preview": {
       "android": {
         "buildType": "apk"
       },
-      "autoIncrement": true
-    },
-    "production": {}
+      "autoIncrement": true,
+      "node": "18.16.1"
+    }
   }
 }
