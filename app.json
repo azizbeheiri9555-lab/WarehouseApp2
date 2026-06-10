@@ -1,15 +1,34 @@
 {
   "expo": {
-    "name": "مفكرتي",
-    "slug": "smart-notes",
+    "name": "مفكرتي الذكية",
+    "slug": "smart-notes-app",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#6c63ff"
+    },
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "package": "com.smartnotes.app"
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#6c63ff"
+      },
+      "package": "com.yourcompany.smartnotes"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "24232a98-5969-43a1-99e6-862910d4e6f2"
+      }
     }
   }
 }
