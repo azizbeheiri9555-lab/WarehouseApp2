@@ -1,15 +1,9 @@
 {
-  "cli": {
-    "version": ">= 7.0.0",
-    "appVersionSource": "remote"
-  },
   "build": {
     "preview": {
       "android": {
         "buildType": "apk"
-      },
-      "autoIncrement": true,
-      "node": "18.16.1"
+      }
     }
   }
 }
