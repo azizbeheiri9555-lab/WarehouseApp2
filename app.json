@@ -1,19 +1,11 @@
 {
   "expo": {
-    "name": "مفكرتي الذكية",
+    "name": "Smart Notes",
     "slug": "smart-notes-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "userInterfaceStyle": "automatic",
-    "ios": {
-      "supportsTablet": true
-    },
     "android": {
-      "package": "com.smartnotes.app",
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#6c63ff"
-      }
+      "package": "com.smartnotes.app"
     },
     "extra": {
       "eas": {
