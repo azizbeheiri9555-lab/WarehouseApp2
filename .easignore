@@ -1,7 +1,5 @@
-# منع EAS من إنشاء مجلدات Android/iOS تلقائياً
+# منع إنشاء مجلدات android/ios تلقائياً
 /android
 /ios
-
-# تجاهل الملفات غير الضرورية
 /node_modules
 /.expo
