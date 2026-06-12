@@ -8,8 +8,8 @@
         "buildType": "apk"
       },
       "autoIncrement": true,
-      "env": {
-        "EXPO_USE_APP_CONFIG": "true"
+      "expoCli": {
+        "prebuild": false
       }
     }
   }
