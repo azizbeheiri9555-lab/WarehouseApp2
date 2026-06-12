@@ -1,5 +1,3 @@
-# منع إنشاء مجلدات android/ios تلقائياً
-/android
-/ios
-/node_modules
-/.expo
+   /android
+   /ios
+   /node_modules
